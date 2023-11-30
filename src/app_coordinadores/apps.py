@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AppClienteConfig(AppConfig):
+class AppCoordinadorConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'app_cliente'
+    name = 'app_coordinadores'
