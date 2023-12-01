@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Propias
     'app_reservas',
+    'app_clientes',
+    'app_coordinadores',
+    'app_empleados',
     # Terceros
 ]
 
@@ -57,7 +60,7 @@ ROOT_URLCONF = 'webapp_reservas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
