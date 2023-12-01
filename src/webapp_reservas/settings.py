@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'app_clientes',
     'app_coordinadores',
     'app_empleados',
+    'app_servicios'
     # Terceros
 ]
 
