@@ -1,9 +1,8 @@
 from django.urls import path
-from . import views
-from app_coordinadores import views
+from app_coordinadores import views as coordinadores_views
 
 app_name = 'empleados'
 
 urlpatterns = [
-    path('modificar/<int:id>/', views.actualizar_coordinador, name='actualizar_coordinador')
+    path('modificar/<int:id>/', coordinadores_views.actualizar_coordinador, name='actualizar_coordinador')
 ]
