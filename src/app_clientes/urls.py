@@ -1,8 +1,9 @@
 from django.urls import path
-from .import views
+from . import views
 
 app_name = 'clientes'
 
 urlpatterns = [
-    path('/clientes/desactivar/<int:id>', views.desactivar_cliente, name='desactivar_cliente')
+    path('listado/', views.listado_clientes, name='listado_clientes'),
+    path('clientes/desactivar/<int:id>', views.desactivar_cliente, name='desactivar_cliente')
 ]

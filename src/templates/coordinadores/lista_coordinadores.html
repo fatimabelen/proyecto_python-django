@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block titulo %}
+
+Listado de Coordinadores
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<h1>Coordinadores</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for coordinador in coordinadores %}
+        <tr>
+            <td>{{ coordinador.id }}</td>
+            <td>{{ coordinador.nombre }}</td>
+            <td>{{ coordinador.apellido }}</td>
+            <td>{{ coordinador.número_documento }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido %}
