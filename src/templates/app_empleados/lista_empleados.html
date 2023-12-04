@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block titulo %} LISTA EMPLEADOS {% endblock titulo%}
+
+{% block contenido%}
+
+<h2>LISTADO DE EMPLEADOS</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Número de legajo</th>
+      <th scope="col">Activo</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for empleado in empleados %} 
+    <tr>
+        <th scope="row">
+        <a href="{{ empleado.get_absolute_url}}"> 
+        {{ empleado.pk}}
+        </a>
+        </th>
+      <td>{{ empleado.nombre}}</td>
+      <td>{{ empleado.apellido}}</td>
+      <td>{{ empleado.numero_legajo}}</td>
+      <td>{{ empleado.activo}}</td>
+    </tr> 
+    {% endfor%}
+
+  </tbody>
+</table>
+
+{%endblock contenido%}

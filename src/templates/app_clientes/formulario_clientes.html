@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block titulo %} Formulario de clientes {% endblock %}
+
+{%block contenido%} 
+<form action="" method="POST" enctype="multipart/form-data" > 
+    <table>
+        {{ forms.as_table}}
+        {% csrf_token %}
+    </table>
+    <button type="submit"> AGREGAR  </button>
+</form>
+{% endblock contenido%}

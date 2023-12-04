@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 # Create your models here.
 class Empleado(models.Model):
@@ -14,3 +16,7 @@ class Empleado(models.Model):
 
     class Meta:
         ordering = ['apellido', 'nombre']
+
+    def get_absolute_url(self):
+        return reverse("empleados:detalle", kwargs={"pk": self.pk})
+    

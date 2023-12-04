@@ -5,3 +5,6 @@ class Cliente(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     activo = models.BooleanField(default=True)
+
+def __str__(self):
+    return F"{self.nombre} {self.apellido}"
