@@ -29,9 +29,9 @@ def actualizar_coordinador(request, id):
 
 
 class CoordinadorCreateView(generic.CreateView):
-    model = 'Coordinador'
-    fields = ['nombre', 'apellido', 'numero_documento', 'fecha_alta']
-    template_name = 'app_coordinadores/nuevo_coordinador.html'
+    model = Coordinador
+    fields = '__all__'
+    template_name = 'coordinadores/nuevo_coordinador.html'
     success_url = reverse_lazy('coordinadores:listado_coordinadores')
 
 

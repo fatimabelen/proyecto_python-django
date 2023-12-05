@@ -8,4 +8,7 @@ class Servicio(models.Model):
     activo = models.BooleanField(default=True)
 
 def __str__(self):
-    return F"{self.nombre} | {self.precio}"
+        return F"{self.nombre}, {self.precio}, {self.activo}"
+
+class META:
+    ordering = ['nombre', 'precio']

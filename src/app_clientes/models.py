@@ -12,4 +12,4 @@ class Cliente(models.Model):
 
 
     class Meta:
-        ordering = ['apellido', 'nombre']
+        ordering = ['id']

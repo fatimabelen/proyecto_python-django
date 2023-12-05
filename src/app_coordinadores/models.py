@@ -10,4 +10,4 @@ class Coordinador(models.Model):
 
 
 def __str__(self):
-    return F"{self.nombre} {self.apellido} | {self.numero_documento}"
+    return F"{self.nombre} | {self.apellido}"

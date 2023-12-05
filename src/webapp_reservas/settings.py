@@ -59,8 +59,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'webapp_reservas.urls'
 
 TEMPLATES = [
-
-# Gestor de plantillas Jinja
+     # Gestor de plantillas Jinja
     {
         'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'DIRS': [BASE_DIR / 'templates'],
@@ -72,9 +71,8 @@ TEMPLATES = [
         },
     },
 
-# Gestor de plantillas por defecto 
-
-    {
+     # Gestor de plantillas por defecto 
+      {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
@@ -87,6 +85,7 @@ TEMPLATES = [
             ],
         },
     },
+
 ]
 
 WSGI_APPLICATION = 'webapp_reservas.wsgi.application'
