@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+
+Actualización Coordinador
+
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h2>Actualizar Coordinador</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Actualizar Coordinador</button>
+
+</form>
+{% endblock %}
