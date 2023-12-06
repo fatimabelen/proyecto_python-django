@@ -29,3 +29,17 @@ def actualizar_cliente(request, id):
     return render(request, 'clientes/actualizar_cliente.html', {'form': form, 'cliente': cliente})
 
 # activar clientes
+class ClienteUpdateView(generic.UpdateView):
+    model = Cliente
+    fields = ['activo', 'nombre', 'apellido']
+    extra_context = {'titulo': 'ACTIVAR CLIENTE', 'mensaje_boton': 'GUARDAR CAMBIOS'}
+    template_name = 'clientes/activar.html'
+    
+
+class ClienteCreateView(generic.CreateView): 
+    model = Cliente
+    fields = '__all__'
+    template_name = 'clientes/nuevo.html'
+    extra_context = {'titulo': 'ALTA DE CLIENTE', 'mensaje_boton': 'CREAR'}
+    success_url = reverse_lazy("clientes:lista_clientes")
+  
