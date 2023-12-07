@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Cliente(models.Model):
@@ -13,3 +14,7 @@ class Cliente(models.Model):
 
     class Meta:
         ordering = ['id']
+
+    """ def get_absolute_url(self):
+        return reverse("clientes:detalle", kwargs={"pk": self.pk})
+    """

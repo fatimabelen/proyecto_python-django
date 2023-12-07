@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.urls import reverse_lazy
+from django.http import HttpResponse
 from .models import Coordinador
 from .forms import CoordinadorForm
 
@@ -27,10 +28,10 @@ def actualizar_coordinador(request, id):
 
     return render(request, 'coordinadores/actualizar_coordinador.html', {'form': form, 'coordinador': coordinador})
 
-
+# Crear nuevo coordinador
 class CoordinadorCreateView(generic.CreateView):
     model = Coordinador
-    fields = '__all__'
+    fields = ['nombre', 'apelliido', 'numero_documento', 'fecha_alta']
     template_name = 'coordinadores/nuevo_coordinador.html'
     success_url = reverse_lazy('coordinadores:listado_coordinadores')
 
@@ -40,7 +41,5 @@ def activar_coordinador(request, id):
     coordinador = get_object_or_404(Coordinador, id=id)
     coordinador.activo = True
     coordinador.save()  # Guarda los cambios en la base de datos
-    mensaje = f'El registro del coordinador se activó con éxito.'
-
-    # Falta el return
+    return redirect('coordinadores:listado:coordinadores')
 

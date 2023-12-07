@@ -1,36 +1,46 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
+from django.urls import reverse_lazy
+from django.http import HttpResponse
+from django import forms
 from .models import Cliente
 
 
 # Create your views here.
-#def listado_clientes(request):
-#   clientes = Cliente.objects.all()
-#   return render(request, 'clientes:lista_clientes.html', {'clientes': clientes})
+def listado_clientes(request):
+   clientes = Cliente.objects.all()
+   return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
 
 
-class ClientesListView(generic.ListView):
+# Crear nuevo cliente
+class ClientesCreateView(generic.CreateView):
     model = Cliente
-    fields = '__all__'
-    template_name = 'clientes/lista_clientes.html'
-    context_object_name = 'clientes'
+    fields = ['nombre', 'apellido']
+    template_name = 'clientes/formulario_clientes.html'
+    extra_context = {'titulo':'REGISTRAR CLIENTE', 'mensaje_boton':'REGISTRAR CLIENTE'}
+    success_url = reverse_lazy('clientes:listado_clientes')
 
-    # Función para desactivar clientes
-"""
-    def post(self, request, *args, **kwargs):
-        cliente_id = request.POST.get('cliente_id')
-        cliente = Cliente.objects.get(pk=cliente_id)
-        cliente.activo = False
-        cliente.save()
-        return self.get(request, *args, **kwargs)
 
-"""
+# Actualizar cliente
+class ClientesUpdateView(generic.UpdateView):
+    model = Cliente
+    fields =  ['nombre', 'apellido']
+    template_name = 'clientes/formulario_clientes.html'
+    extra_context = {'titulo':'ACTUALIZAR CLIENTE', 'mensaje_boton':'ACTUALIZAR CLIENTE'}
+    success_url = reverse_lazy('clientes:listado_clientes')
+
 # Vista para desactivar el registro de un cliente
-"""
 def desactivar_cliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
     cliente.activo = False
     cliente.save()  # Guarda los cambios en la base de datos
-    mensaje = f'El registro del cliente se desactivó con éxito'
-    # falta el return
-"""
+    return redirect('clientes:listado_clientes') 
+
+
+# Vista para activar el registro de un cliente
+def activar_cliente(request, id):
+    cliente = get_object_or_404(Cliente, id=id)
+    cliente.activo = True
+    cliente.save()
+    return redirect('clientes:listado_clientes')
+    

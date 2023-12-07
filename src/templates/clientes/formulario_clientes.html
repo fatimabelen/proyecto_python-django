@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
-{% block titulo %} Formulario de clientes {% endblock %}
+{% block contenido%}
 
-{%block contenido%} 
-<form action="" method="POST" enctype="multipart/form-data" > 
+<h2> REGISTRAR O ACTUALIZAR CLIENTE</h2>
+
+<form action="", method="POST", enctype='multipart/form'>
     <table>
-        {{ forms.as_table}}
+        {{ form.as_table }}
         {% csrf_token %}
     </table>
-    <button type="submit"> AGREGAR  </button>
+    <button type="submit">{{mensaje_boton}} </button>
 </form>
+<div class="alert alert-primary" role="alert">
+    <a href="{% url 'clientes:listado_clientes' %}" class="alert-link"> Click acá </a> para volver al listado. 
+</div>
 {% endblock contenido%}
