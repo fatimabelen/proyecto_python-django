@@ -2,18 +2,18 @@
 
 {% block titulo %}
 
-Actualización Coordinador
+Actualización Empleado
 
 {% endblock titulo %}
 
 {% block contenido %}
 
-<h2>Actualizar Coordinador</h2>
+<h2>Actualizar Empleado</h2>
 
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Actualizar Coordinador</button>
+    <button type="submit">Actualizar Empleado</button>
 
 </form>
 {% endblock %}

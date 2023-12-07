@@ -2,18 +2,18 @@
 
 {% block titulo %}
 
-Actualización Coordinador
+{{ titulo }}
 
 {% endblock titulo %}
 
 {% block contenido %}
 
-<h2>Actualizar Coordinador</h2>
+<h2>{{titulo}}</h2>
 
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Actualizar Coordinador</button>
+    <button type="submit">{{mensaje_boton}}</button>
 
 </form>
 {% endblock %}
