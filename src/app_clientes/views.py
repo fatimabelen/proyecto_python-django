@@ -37,7 +37,7 @@ def actualizar_cliente(request, id):
         form = ClienteUpdateForm(request.POST, instance=cliente)
         if form.is_valid():
             form.save()
-            return redirect('clientes:lista_clientes')
+            return redirect('clientes:listado_clientes')
 
     else:
         form = ClienteUpdateForm(instance=cliente)
