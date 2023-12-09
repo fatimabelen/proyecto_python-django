@@ -45,3 +45,12 @@ def activar_servicio(request, id):
     servicio.save()
     messages.success(request, f"El servicio {servicio.nombre} ha sido activado.")
     return redirect('servicios:listado_servicios')
+
+
+# Desactivar el registro de un servicio
+def desactivar_servicio(request, id):
+    servicio = get_object_or_404(Servicio, id=id)
+    servicio.activo = False
+    servicio.save()
+    messages.success(request, f"El servicio {servicio.nombre} ha sido desactivado.")
+    return redirect('servicios:listado_servicios')    

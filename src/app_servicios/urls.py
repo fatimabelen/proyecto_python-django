@@ -8,4 +8,5 @@ urlpatterns = [
     path('listado/', views.ServiciosListView.as_view(), name='listado_servicios'),
     path('modificar/<int:id>', views.ServiciosUpdateView.as_view(), name='actualizar_servicio'),
     path('activar/<int:id>', views.activar_servicio, name="activar_servicio"),
+    path('desactivar/<int:id>', views.desactivar_servicio, name="desactivar_servicio"),
 ]
