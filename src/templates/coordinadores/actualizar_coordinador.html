@@ -14,6 +14,8 @@ Actualización Coordinador
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Actualizar Coordinador</button>
-
 </form>
+<div class="alert alert-primary" role="alert">
+    <a href="{% url 'coordinadores:listado_coordinadores' %}" class="alert-link"> Click acá </a> para volver al listado.
+</div>
 {% endblock %}
