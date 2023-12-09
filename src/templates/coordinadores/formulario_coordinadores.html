@@ -2,7 +2,7 @@
 
 {% block contenido%}
 
-<h2> REGISTRAR O ACTUALIZAR CLIENTE</h2>
+<h2> REGISTRAR O ACTUALIZAR COORDINADOR</h2>
 
 <form action="" , method="POST" , enctype='multipart/form'>
     <table>
@@ -12,6 +12,6 @@
     <button type="submit">{{mensaje_boton}} </button>
 </form>
 <div class="alert alert-primary" role="alert">
-    <a href="{% url 'clientes:listado_clientes' %}" class="alert-link"> Click acá </a> para volver al listado.
+    <a href="{% url 'coordinadores:listado_coordinadores' %}" class="alert-link"> Click acá </a> para volver al listado.
 </div>
 {% endblock contenido%}
