@@ -1,19 +1,18 @@
 {% extends "base.html" %}
 
-{% block titulo %}
-
-Nuevo coordinador
-
-{% endblock titulo %}
+{% block titulo %} REGISTRAR COORDINADOR{% endblock titulo %}
 
 {% block contenido %}
 
-<h2>Registrar Coordinador</h2>
+<h2> REGISTRAR COORDINADORr</h2>
 
-<form method="post">
+<form  action="" , method="POST" , enctype='multipart/form'>
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Registrar Coordinador</button>
 </form>
+<div class="alert alert-primary" role="alert">
+    <a href="{% url 'coordinadores:listado_coordinadores' %}" class="alert-link"> Click acá </a> para volver al listado.
+</div>
 
 {% endblock %}

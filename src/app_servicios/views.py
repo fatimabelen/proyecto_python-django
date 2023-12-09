@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.urls import reverse_lazy
+from django.http import HttpResponse
+from django.contrib import messages
 from .models import Servicio
-
 
 # Create your views here.
 
@@ -20,4 +21,12 @@ class ServiciosUpdateView(generic.UpdateView):
     fields = ['nombre', 'descripcion', 'precio']
     template_name = 'servicios/formulario_servicios.html'
     success_url = reverse_lazy('app_servicios:listado_servicios')
-    
+
+
+# Vista para activar el registro de un servicio
+def activar_servicio(request, id):
+    servicio = get_object_or_404(Servicio, id=id)
+    servicio.activo = True
+    servicio.save()
+    messages.success(request, f"El servicio {servicio.nombre} ha sido activado.")
+    return redirect('servicios:listado_servicios')
