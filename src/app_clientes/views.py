@@ -15,9 +15,9 @@ def listado_clientes(request):
 class ClientesCreateView(generic.CreateView):
     model = Cliente
     fields = ['nombre', 'apellido']
-    template_name = 'clientes/formulario_clientes.html'
+    template_name = 'clientes/nuevo_cliente.html'
     extra_context = {'titulo':'REGISTRAR CLIENTE', 'mensaje_boton':'REGISTRAR CLIENTE'}
-    success_url = reverse_lazy('clientes:listado_clientes')
+    success_url = reverse_lazy('app_clientes:listado_clientes')
 
 """
 # Actualizar cliente
@@ -37,7 +37,7 @@ def actualizar_cliente(request, id):
         form = ClienteUpdateForm(request.POST, instance=cliente)
         if form.is_valid():
             form.save()
-            return redirect('clientes:lista_clientes')
+            return redirect('app_clientes:listado_clientes')
 
     else:
         form = ClienteUpdateForm(instance=cliente)
@@ -49,7 +49,7 @@ def desactivar_cliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
     cliente.activo = False
     cliente.save()  # Guarda los cambios en la base de datos
-    return redirect('clientes:listado_clientes') 
+    return redirect('app_clientes:listado_clientes') 
 
 
 # Vista para activar el registro de un cliente
@@ -57,5 +57,5 @@ def activar_cliente(request, id):
     cliente = get_object_or_404(Cliente, id=id)
     cliente.activo = True
     cliente.save()
-    return redirect('clientes:listado_clientes')
+    return redirect('app_clientes:listado_clientes')
     

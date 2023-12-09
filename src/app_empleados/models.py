@@ -15,7 +15,7 @@ class Empleado(models.Model):
 
 
     class Meta:
-        ordering = ['apellido', 'nombre']
+        ordering = ['id']
 
     def get_absolute_url(self):
         return reverse("empleados:detalle", kwargs={"pk": self.pk})

@@ -1,36 +1,60 @@
-{% extends "base.html" %}
+{% extends 'base.html'%}
+
+{% block titulo %} LISTA EMPLEADOS {% endblock titulo%}
+
+{% block contenido%}
+
+<div class="container mt-4"> <!-- Agrega un margen superior al contenedor principal -->
 
 
-{% block titulo %}
+<h2 align="center" class="mb-4">LISTADO DE EMPLEADOS</h2>
 
-Listado de Empleados
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Número de legajo</th>
+      <th scope="col">Activo</th>
+      <th scope='col'>  </th>
+      <th scope='col'>  </th>
+      <th scope='col'> </th>
+    </tr>
+  </thead>
+  <tbody>
 
-{% endblock titulo %}
+    {% for empleado in empleados %} 
+    <tr>
+        <th scope="row"> {{empleado.id}}
+      <!--
+        <a href="{{ cliente.get_absolute_url}}"> 
+        {{ cliente.pk}}
+        </a>>
+      --> 
+        </th>
+      <td>{{ empleado.nombre}}</td>
+      <td>{{ empleado.apellido}}</td>
+      <td>{{ empleado.numero_legajo}}</td>
+      <td>{{ empleado.activo}}</td>
+      <td> <a href="{% url 'app_empleados:actualizar_empleado' empleado.pk %}"> <button type="button" class="btn btn-outline-warning">Modificar</button> </a> </td>
+      <td> 
+        {% if empleado.activo %}
+            <a href="{% url 'app_empleados:estado_activo_empleado' empleado.pk %}"><button type="button" class="btn btn-outline-danger"> Desactivar</button> </a> </td>
+        {% else %}
+            <span> <button type="button" class="btn btn-light">Desactivar</button></span> 
+        {% endif %}
+      <td> 
+        {% if not empleado.activo%}
+            <a href="{% url 'app_empleados:estado_activo_empleado' empleado.pk %}"><button type="button" class="btn btn-outline-success">Activar</button></a> </td>
+        {% else %}
+            <span> <button type="button" class="btn btn-light">Activar</button></span>
+        {% endif %}
+    </tr> 
+    {% endfor%}
 
-
-{% block contenido %}
-
-<h1>Empleados</h1>
-
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>numero_legajo</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for empleado in empleados %}
-        <tr>
-            <td>{{ empleado.id }}</td>
-            <td>{{ empleado.nombre }}</td>
-            <td>{{ empleado.apellido }}</td>
-            <td>{{ empleado.numero_legajo }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+  </tbody>
 </table>
 
-{% endblock contenido %}
+<a href="{% url 'app_empleados:registrar_empleado' %}"> <button type="button" class="btn btn-primary">Nuevo empleado</button></a>
+{%endblock contenido%}
