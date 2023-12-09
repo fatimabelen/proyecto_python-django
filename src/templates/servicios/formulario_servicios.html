@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block contenido%}
+
+<h2>ACTUALIZAR SERVICIO</h2>
+
+<form action="" , method="POST" , enctype='multipart/form'>
+    <table>
+        {{ form.as_table }}
+        {% csrf_token %}
+    </table>
+    <button type="submit">{{mensaje_boton}} </button>
+</form>
+<div class="alert alert-primary" role="alert">
+    <a href="{% url 'app_servicios:listado_servicios' %}" class="alert-link"> Click acá </a> para volver al listado.
+</div>
+{% endblock contenido%}
