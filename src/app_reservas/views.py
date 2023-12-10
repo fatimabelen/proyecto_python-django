@@ -14,7 +14,8 @@ from app_servicios.models import Servicio
 class ReservasCreateView(generic.CreateView):
     model = ReservaServicio
     fields = '__all__'
-    template_name = 'servicios/actualizar_reserva.html'
+    template_name = 'reservas/formulario_reserva.html'
+    extra_context = {'titulo':'REGISTRAR RESERVA', 'mensaje_boton':'REGISTRAR RESERVA'}
     success_url = reverse_lazy('app_reservas:listado_reservas')
 
 

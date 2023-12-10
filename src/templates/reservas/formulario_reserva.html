@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<h2>RESERVA DE SERVICIO</h2>
+<form method="POST" enctype="multipart/form-data">
+    <table>
+        {{ form.as_table }}
+        {% csrf_token %}
+    </table>
+    <button type="submit">{{mensaje_boton}} </button>
+</form>
+<div class="alert alert-primary" role="alert">
+    <a href="{% url 'app_reservas:listado_reservas' %}" class="alert-link"> Click acá </a> para volver al listado.
+</div>
+{% endblock contenido%}
