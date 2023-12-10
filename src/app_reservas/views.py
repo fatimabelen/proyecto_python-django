@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.urls import reverse_lazy
+from django.contrib import messages
 from .models import ReservaServicio
 from app_clientes.models import Cliente
 from app_coordinadores.models import Coordinador
@@ -33,3 +34,14 @@ def editar_reserva(request, pk):
         'empleados_activos': empleados_activos,
         'coordinadores_activos': coordinadores_activos,
     })
+
+# Vista para eliminar una reserva de servicio
+
+class ReservaServicioDeleteView(generic.DeleteView):
+    model = ReservaServicio
+    template_name = 'reservas/confirmar_eliminar_reserva.html'
+    success_url = reverse_lazy('app_reservas:listado_reservas')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, "La reserva se eliminó correctamente.")
+        return super().delete(request, *args, **kwargs)
