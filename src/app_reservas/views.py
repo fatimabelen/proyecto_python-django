@@ -27,21 +27,27 @@ class ReservasCreateView(generic.CreateView):
     extra_context = {'titulo':'REGISTRAR RESERVA', 'mensaje_boton':'REGISTRAR RESERVA'}
     success_url = reverse_lazy('app_reservas:listado_reservas')
 
-# Vista para editar una reserva de servicio
-def editar_reserva(request, pk):
-    reserva = get_object_or_404(ReservaServicio, pk=pk)
-    clientes_activos = Cliente.objects.filter(activo=True)
-    servicios_activos = Servicio.objects.filter(activo=True)
-    empleados_activos = Empleado.objects.filter(activo=True)
-    coordinadores_activos = Coordinador.objects.filter(activo=True)
+# Vista para modificar una reserva
+class ReservasUpdateView(generic.UpdateView):
+    model = ReservaServicio
+    fields = '__all__'
+    exclude = 'fecha_reserva'
+    template_name = 'reservas/actualizar_reserva.html'
+    success_url = reverse_lazy('app_reservas:listado_reservas')
 
-    return render(request, 'reservas/actualizar_reserva.html', {
-        'reserva': reserva,
-        'clientes_activos': clientes_activos,
-        'servicios_activos': servicios_activos,
-        'empleados_activos': empleados_activos,
-        'coordinadores_activos': coordinadores_activos,
-    })
+    def form_valid(self, form):
+        # Validar que el cliente/servicio/empleado/responsable esté activo
+        cliente = form.cleaned_data.get('cliente') 
+        servicio = form.cleaned_data.get('servicio') 
+        empleado = form.cleaned_data.get('empleado') 
+        responsable = form.cleaned_data.get('responsable')  
+
+        if not cliente.activo or not servicio.activo or not empleado.activo or not responsable.activo:
+            form.add_error(None, 'No se puede seleccionar un elemento inactivo.')
+            return self.form_invalid(form)
+
+        return super().form_valid(form)
+
 
 # Vista para eliminar una reserva de servicio
 class ReservaServicioDeleteView(generic.DeleteView):

@@ -1,84 +1,21 @@
-<!-- COMO desarrollador
-QUIERO crear un formulario
-PARA actualizar los datos de un registro de reserva
-
-Criterios de aceptación:
-
-Crear un formulario con los datos de la reserva: fecha, servicio, precio, etc
-
-El formulario debe tener cargados los datos actuales del registro
-
-Validar que los clientes/servicios/empleados/coordinadores estén activos, es decir, no permitir seleccionar inactivos
-
-Agregar el token de Django al formulario
-
-El método del formuario debe ser POST
-
-Agregar el botón (submit)-->
-
 {% extends "base.html" %}
 
-{% block contenido%}
-<h2> Formulario para actualizar una reserva de servicio </h2>
+{% block titulo %}
 
+ACTUALIZAR RESERVA
 
-<form method="POST" action="{% url 'app_reservas:actualizar_reserva' reserva.pk %}" >
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h2>ACTUALIZAR RESERVA DE SERVICIO</h2>
+
+<form action="", method="post", enctype='multipart/form'>
     {% csrf_token %}
-
-
-    <div class="mb-3">
-      <label for="fechareservada">Fecha:</label>
-      <input type="date"  class="form-control form-control-sm" style=" padding: 10px; width: 150px;" id="fechareservada" name="fecha" value="{{ reserva.fecha_reservada }}" required>
-    </div>
-
-    <div class="mb-3">
-    <label for="cliente">ID del cliente:</label>
-    <select class="form-select" aria-label="Default select example" style=" padding: 5px; width: 150px;" id="cliente" name="cliente" required >
-        {% for cliente in clientes_activos %}
-            <option value="{{ cliente.id }}" {% if cliente.id == reserva.cliente.id %}selected{% endif %}>{{ cliente.id }}</option>
-        {% endfor %}
-    </select>
-    </div>
-
-    <div class="mb-3">
-    <label for="servicio">Nombre del servicio:</label>
-    <select class="form-select" aria-label="Default select example" style=" padding: 5px; width: 200px;" id="servicio" name="servicio" required>
-        {% for servicio in servicios_activos %}
-            <option value="{{ servicio.id }}" {% if servicio.id == reserva.servicio.id %}selected{% endif %}>{{ servicio.nombre }}</option>
-        {% endfor %}
-    </select>
-    </div>
-
-    <div class="mb-3">
-    <label for="empleado">ID del empleado que toma la reserva:</label>
-    <select class="form-select" aria-label="Default select example" style=" padding: 5px; width: 150px;" id="empleado" name="empleado" required>
-        {% for empleado in empleados_activos %}
-            <option value="{{ empleado.id }}" {% if empleado.id == reserva.empleado.id %}selected{% endif %}>{{ empleado.id }}</option>
-        {% endfor %}
-    </select>
-    </div>
-
-    <div class="mb-3">
-    <label for="coordinador">ID del coordinador del servicio:</label>
-    <select class="form-select" aria-label="Default select example" style=" padding: 5px; width: 150px;" id="coordinador" name="coordinador" required>
-        {% for coordinador in coordinadores_activos %}
-            <option value="{{ coordinador.id }}" {% if coordinador.id == reserva.coordinador.id %}selected{% endif %}>{{ coordinador.id }}</option>
-        {% endfor %}
-    </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary"> Guardar cambios</button>
+    {{ form.as_p }}
+    <button type="submit">ACTUALIZAR RESERVA</button>
 </form>
-
-<br> 
-</br>
-
 <div class="alert alert-primary col-3" role="alert">
     <a href="{% url 'app_reservas:listado_reservas' %}" class="alert-link"> Click acá </a> para volver al listado. 
 </div>
-
-<!-- <form>
-    <label> Fecha de la reserva </label>
-    <input type='date'>  </input>
-</form> -->
-{% endblock contenido%}
+{% endblock %}
