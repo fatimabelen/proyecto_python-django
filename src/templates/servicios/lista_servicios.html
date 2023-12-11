@@ -1,20 +1,20 @@
 {% extends 'base.html'%}
 
-{% block titulo %} LISTA DE SERVICIOS {% endblock titulo%}
+{% block titulo %} LISTA CLIENTES {% endblock titulo%}
 
 {% block contenido%}
 
 <div class="container mt-4"> <!-- Agrega un margen superior al contenedor principal -->
 
 
-<h2 align="center" class="mb-4">LISTADO DE SERVICIOS</h2>
+<h2 align="center" class="mb-4">LISTADO DE CLIENTES </h2>
 
 <table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Descripcion</th>
+      <th scope="col">Descripción</th>
       <th scope="col">Precio</th>
       <th scope="col">Activo</th>
       <th scope='col'>  </th>
@@ -26,27 +26,27 @@
 
     {% for servicio in servicios %} 
     <tr>
-        <th scope="row"> {{servicio.id}}
+        <th scope="row"> {{servicio.pk}}
       <!--
-        <a href="{{ cliente.get_absolute_url}}"> 
+        <a href="{{ servicio.get_absolute_url}}"> 
         {{ cliente.pk}}
         </a>>
       --> 
         </th>
-      <td>{{ servicio.nombre }}</td>
-      <td>{{ servicio.descripcion }}</td>
-      <td>{{ servicio.precio }}</td>
-      <td>{{ servicio.activo }}</td>
+      <td>{{ servicio.nombre}}</td>
+      <td>{{ servicio.descripcion}}</td>
+      <td>{{ servicio.precio}}</td>
+      <td>{{ servicio.activo}}</td>
       <td> <a href="{% url 'app_servicios:actualizar_servicio' servicio.pk %}"> <button type="button" class="btn btn-outline-warning">Modificar</button> </a> </td>
       <td> 
-        {% if empleado.activo %}
-            <a href="{% url 'app_servicios:estado_activo_servicio' servicio.pk %}"><button type="button" class="btn btn-outline-danger"> Desactivar</button> </a> </td>
+        {% if  servicio.activo %}
+            <a href="{% url 'app_servicios:desactivar_servicio' servicio.pk %}"><button type="button" class="btn btn-outline-danger"> Desactivar</button> </a> </td>
         {% else %}
             <span> <button type="button" class="btn btn-light">Desactivar</button></span> 
         {% endif %}
       <td> 
-        {% if not servicio.activo%}
-            <a href="{% url 'app_servicios:estado_activo_servicio' servicio.pk %}"><button type="button" class="btn btn-outline-success">Activar</button></a> </td>
+        {% if not servicio.activo %}
+            <a href="{% url 'app_servicios:activar_servicio' servicio.pk %}"><button type="button" class="btn btn-outline-success">Activar</button></a> </td>
         {% else %}
             <span> <button type="button" class="btn btn-light">Activar</button></span>
         {% endif %}
@@ -56,5 +56,5 @@
   </tbody>
 </table>
 
+<a href="{% url 'app_servicios:registrar_servicio' %}"> <button type="button" class="btn btn-primary">Nuevo cliente</button></a>
 {%endblock contenido%}
-

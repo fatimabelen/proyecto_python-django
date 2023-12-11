@@ -13,7 +13,8 @@ class ServiciosCreateView(generic.CreateView):
     model = Servicio
     form_class = ServicioUpdateForm
     template_name = 'servicios/formulario_servicios.html'
-    success_url = reverse_lazy('app_servicios:listado_servicios')
+    extra_context = {'titulo': 'REGISTRAR SERVICIO', 'mensaje_boton':'REGISTRAR SERVICIO'}
+    success_url = reverse_lazy('app_servicios:lista_servicios')
 
     def form_valid(self, form):
         return super().form_valid(form)
@@ -26,16 +27,18 @@ class ServiciosCreateView(generic.CreateView):
 class ServiciosListView(generic.ListView):
     model = Servicio
     fields = '__all__'
-    template_name = 'servicios/listado_servicios.html'
+    template_name = 'servicios/lista_servicios.html'
     context_object_name = 'servicios'
 
 
 # Actualizar un registro de servicio
+
 class ServiciosUpdateView(generic.UpdateView):
     model = Servicio
     fields = ['nombre', 'descripcion', 'precio']
     template_name = 'servicios/formulario_servicios.html'
-    success_url = reverse_lazy('app_servicios:listado_servicios')
+    extra_context = {'titulo' : 'ACTUALIZAR SERVICIO', 'mensaje_boton' : 'GUARDAR CAMBIOS'}
+    success_url = reverse_lazy('app_serivios:lista_servicios')
 
 
 # Activar el registro de un servicio
@@ -43,8 +46,7 @@ def activar_servicio(request, id):
     servicio = get_object_or_404(Servicio, id=id)
     servicio.activo = True
     servicio.save()
-    messages.success(request, f"El servicio {servicio.nombre} ha sido activado.")
-    return redirect('servicios:listado_servicios')
+    return redirect('app_servicios:lista_servicios')
 
 
 # Desactivar el registro de un servicio
@@ -52,5 +54,4 @@ def desactivar_servicio(request, id):
     servicio = get_object_or_404(Servicio, id=id)
     servicio.activo = False
     servicio.save()
-    messages.success(request, f"El servicio {servicio.nombre} ha sido desactivado.")
-    return redirect('servicios:listado_servicios')    
+    return redirect('app_servicios:lista_servicios')    
