@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'app_coordinadores',
     'app_empleados',
     'app_servicios',
+    'api',
     # Terceros
 ]
 
