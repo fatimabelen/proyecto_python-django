@@ -10,14 +10,22 @@ from app_servicios.models import Servicio
 
 
 # Create your views here.
+# Vista para listar reservas de servicios
+class ReservasListView(generic.ListView):
+    model = ReservaServicio
+    fields = ['__all__']
+    template_name = 'reservas/lista_reservas.html'
+    context_object_name = 'reservas'
+
+
 
 # Vista para crear nuevas reservas de servicios
 class ReservasCreateView(generic.CreateView):
     model = ReservaServicio
     fields = '__all__'
-    template_name = 'reservas/formulario_reserva.html'
+    template_name = 'reservas/nueva_reserva.html'
     extra_context = {'titulo':'REGISTRAR RESERVA', 'mensaje_boton':'REGISTRAR RESERVA'}
-    #success_url = reverse_lazy('app_reservas:listado_reservas')
+    success_url = reverse_lazy('app_reservas:listado_reservas')
 
 # Vista para editar una reserva de servicio
 def editar_reserva(request, pk):
