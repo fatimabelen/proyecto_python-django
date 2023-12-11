@@ -19,15 +19,6 @@ class ClientesCreateView(generic.CreateView):
     extra_context = {'titulo':'REGISTRAR CLIENTE', 'mensaje_boton':'REGISTRAR CLIENTE'}
     success_url = reverse_lazy('app_clientes:listado_clientes')
 
-"""
-# Actualizar cliente
-class ClientesUpdateView(generic.UpdateView):
-    model = Cliente
-    fields =  ['nombre', 'apellido']
-    template_name = 'clientes/formulario_clientes.html'
-    extra_context = {'titulo':'ACTUALIZAR CLIENTE', 'mensaje_boton':'ACTUALIZAR CLIENTE'}
-    success_url = reverse_lazy('clientes:listado_clientes')
-"""
 
 # actualizacion de datos de clientes
 def actualizar_cliente(request, id):

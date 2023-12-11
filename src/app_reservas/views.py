@@ -17,9 +17,9 @@ class ReservasCreateView(generic.CreateView):
     fields = '__all__'
     template_name = 'reservas/formulario_reserva.html'
     extra_context = {'titulo':'REGISTRAR RESERVA', 'mensaje_boton':'REGISTRAR RESERVA'}
-    success_url = reverse_lazy('app_reservas:listado_reservas')
+    #success_url = reverse_lazy('app_reservas:listado_reservas')
 
-
+# Vista para editar una reserva de servicio
 def editar_reserva(request, pk):
     reserva = get_object_or_404(ReservaServicio, pk=pk)
     clientes_activos = Cliente.objects.filter(activo=True)
@@ -36,7 +36,6 @@ def editar_reserva(request, pk):
     })
 
 # Vista para eliminar una reserva de servicio
-
 class ReservaServicioDeleteView(generic.DeleteView):
     model = ReservaServicio
     template_name = 'reservas/confirmar_eliminar_reserva.html'
