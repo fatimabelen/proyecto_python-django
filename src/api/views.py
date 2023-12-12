@@ -3,7 +3,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from app_coordinadores.models import Coordinador
 from app_clientes.models import Cliente
-from .serializers import CoordinadorSerializer, ClienteSerializer
+from .serializers import CoordinadorSerializer, ClienteSerializerList, ClienteSerializerRetrieve
 
 
 # Create your views here.
@@ -23,10 +23,10 @@ class CoordinadorRetrieveAPIVIEW(generics.RetrieveAPIView):
 # Vistas para CLIENTE
 class ClienteListAPIView(generics.ListAPIView):
     queryset = Cliente.objects.all()
-    serializer_class = ClienteSerializer
+    serializer_class = ClienteSerializerList
     permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ClienteRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Cliente.objects.all()
-    serializer_class = ClienteSerializer
+    serializer_class = ClienteSerializerRetrieve
     permission_classes = [IsAuthenticatedOrReadOnly]

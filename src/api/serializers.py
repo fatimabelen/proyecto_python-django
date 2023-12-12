@@ -9,3 +9,14 @@ class CoordinadorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coordinador
         fields = ['nombre', 'apellido', 'id', 'numero_documento', 'fecha_alta', 'activo']
+
+
+class ClienteSerializerList(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = ['id', 'nombre']
+
+class ClienteSerializerRetrieve(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = '__all__'
