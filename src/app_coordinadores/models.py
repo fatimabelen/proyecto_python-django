@@ -7,7 +7,6 @@ class Coordinador(models.Model):
     numero_documento = models.IntegerField()
     fecha_alta = models.DateTimeField(auto_now_add=True)
     activo = models.BooleanField(default=True)
-
-
-def __str__(self):
-    return F"{self.nombre} | {self.apellido}"
+    
+    def __str__(self):
+        return F" {self.id} | {self.nombre} {self.apellido}"
