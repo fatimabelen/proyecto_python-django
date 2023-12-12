@@ -5,7 +5,7 @@ from app_empleados.models import Empleado
 from app_reservas.models import ReservaServicio
 from app_servicios.models import Servicio
 
-class CoordinadoresSerializer(serializers.ModelSerializer):
+class CoordinadorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coordinador
-        fields = '__all__'
+        fields = ['nombre', 'apellido', 'id', 'numero_documento', 'fecha_alta', 'activo']
