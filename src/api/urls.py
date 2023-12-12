@@ -10,4 +10,6 @@ urlpatterns = [
     path('empleados/<int:pk>', views.EmpleadoRetrieveAPIView.as_view(), name='buscar_empleado'),
     path('reservas/', views.ReservaListAPIView.as_view(), name='listar_reservas'),
     path('reservas/<int:id>', views.ReservaRetrieveAPIView.as_view(), name='buscar_reserva'),
+    path('clientes/', views.ClienteListAPIView.as_view(), name='listar_cliente'),
+    path('clientes/<int:pk>/', views.ClienteRetrieveAPIView.as_view(), name='buscar_cliente')
 ]
