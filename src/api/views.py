@@ -4,9 +4,14 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from app_coordinadores.models import Coordinador
 from app_clientes.models import Cliente
 from app_servicios.models import Servicio
+from app_empleados.models import Empleado
+from app_reservas.models import ReservaServicio
 from .serializers import ClienteSerializerList, ClienteSerializerRetrieve
 from .serializers import CoordinadorSerializerList, CoordinadorSerializerRetrieve
 from .serializers import ServicioSerializerList, ServicioSerializerRetrieve
+from .serializers import EmpleadoSerializerList, EmpleadoSerializerRetrieve
+
+
 # Create your views here.
 
 # Vistas para COORDINADOR
@@ -40,4 +45,15 @@ class ServicioListAPIView(generics.ListAPIView):
 class ServicioRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Servicio.objects.all()
     serializer_class = ServicioSerializerRetrieve
+    permission_classes = [IsAuthenticatedOrReadOnly]    
+
+    # Vistas para EMPLEADO
+class EmpleadoListAPIView(generics.ListAPIView):
+    queryset = Empleado.objects.all()
+    serializer_class = EmpleadoSerializerList
+    permission_clases = [IsAuthenticatedOrReadOnly]
+        
+class EmpleadoRetrieveAPIVIEW(generics.RetrieveAPIView):
+    queryset = Empleado.objects.all()
+    serializer_class = EmpleadoSerializerRetrieve
     permission_classes = [IsAuthenticatedOrReadOnly]    

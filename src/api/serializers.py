@@ -37,5 +37,13 @@ class ServicioSerializerRetrieve(serializers.ModelSerializer):
     class Meta:
         model = Servicio
         fields = '__all__'               
+# EMPLEADO
+class EmpleadoSerializerList(serializers.ModelSerializer):
+    class Meta:
+        model = Empleado
+        fields = ['id', 'nombre']
 
-
+class EmpleadoSerializerRetrieve(serializers.ModelSerializer):
+    class Meta:
+        model = Empleado
+        fields = '__all__'       
