@@ -6,9 +6,8 @@ class Servicio(models.Model):
     descripcion = models.TextField()
     precio = models.DecimalField(decimal_places=2, max_digits=10)
     activo = models.BooleanField(default=True)
-
-def __str__(self):
+    def __str__(self):
         return F"{self.nombre}, {self.precio}, {self.activo}"
 
-class META:
-    ordering = ['nombre', 'precio']
+        class META:
+            ordering = ['nombre', 'precio']

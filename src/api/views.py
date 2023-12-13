@@ -8,7 +8,7 @@ from .serializers import CoordinadorSerializer
 # Create your views here.
 
 class CoordinadorListAPIView(generics.ListAPIView):
-    queryset = Coordinador.objects.all()
+    queryset = Coordinador.objects.all().values('nombre', 'apellido')
     serializer_class = CoordinadorSerializer
     permission_clases = [IsAuthenticatedOrReadOnly]
 

@@ -8,4 +8,5 @@ from app_servicios.models import Servicio
 class CoordinadorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coordinador
-        fields = ['nombre', 'apellido', 'id', 'numero_documento', 'fecha_alta', 'activo']
+        fields= '__all__'
+        
