@@ -11,7 +11,7 @@ class Empleado(models.Model):
 
 # Con esta funcion hacemos que cuando agrgamos un objeto nos devuelva el nombre y no como object1, object2, etc...
     def __str__(self):
-        return F"{self.id}, {self.apellido.upper()}, {self.nombre}"
+        return F"{self.id} | {self.nombre} {self.apellido.upper()} "
 
 
     class Meta:

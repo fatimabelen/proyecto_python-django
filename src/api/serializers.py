@@ -5,8 +5,37 @@ from app_empleados.models import Empleado
 from app_reservas.models import ReservaServicio
 from app_servicios.models import Servicio
 
-class CoordinadorSerializer(serializers.ModelSerializer):
+# COORDINADOR
+class CoordinadorSerializerList(serializers.ModelSerializer):
     class Meta:
         model = Coordinador
-        fields= '__all__'
-        
+        fields = ['id', 'nombre']
+
+class CoordinadorSerializerRetrieve(serializers.ModelSerializer):
+    class Meta:
+        model = Coordinador
+        fields = '__all__'       
+
+# CLIENTE
+class ClienteSerializerList(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = ['id', 'nombre']
+
+class ClienteSerializerRetrieve(serializers.ModelSerializer):
+    class Meta:
+        model = Cliente
+        fields = '__all__'
+
+# SERVICIOS
+class ServicioSerializerList(serializers.ModelSerializer):
+    class Meta:
+        model = Servicio
+        fields = ['id', 'nombre']
+
+class ServicioSerializerRetrieve(serializers.ModelSerializer):
+    class Meta:
+        model = Servicio
+        fields = '__all__'               
+
+
