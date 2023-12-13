@@ -35,6 +35,13 @@ class CoordinadorCreateView(generic.CreateView):
     template_name = 'coordinadores/nuevo_coordinador.html'
     success_url = reverse_lazy('coordinadores:listado_coordinadores')
 
+# Vista para desactivar el registro de un coordinador
+def desactivar_coordinador(request, id):
+    coordinador = get_object_or_404(Coordinador, id=id)
+    coordinador.activo = False
+    coordinador.save()  # Guarda los cambios en la base de datos
+    return redirect('coordinadores:listado_coordinadores') 
+
 
 # Vista para activar el registro de un coordinador
 def activar_coordinador(request, id):
@@ -44,9 +51,3 @@ def activar_coordinador(request, id):
     return redirect('coordinadores:listado_coordinadores')
 
 
-# Vista para desactivar el registro de un coordinador
-def desactivar_coordinador(request, id):
-    coordinador = get_object_or_404(Coordinador, id=id)
-    coordinador.activo = False
-    coordinador.save()  # Guarda los cambios en la base de datos
-    return redirect('coordinadores:listado_coordinadores') 
