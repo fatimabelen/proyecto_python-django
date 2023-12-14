@@ -7,10 +7,12 @@ Eliminación de reserva
 {% block contenido %}
 <h2>Eliminar reserva</h2>
 
-<form method="post" action="{% url 'app_reservas:eliminar_reserva' pk=reserva.pk %}">
+<form method="post" action="{% url 'app_reservas:eliminar_reserva' object.pk %}">
     {% csrf_token %}
 
     <p>¿Estás seguro de que quieres eliminar la reserva?</p>
+
+    {{ form }}
 
     <input type="submit" class="btn btn-danger" value="Eliminar">
 </form>

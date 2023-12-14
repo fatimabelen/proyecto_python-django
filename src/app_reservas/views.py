@@ -52,9 +52,6 @@ class ReservasUpdateView(generic.UpdateView):
 class ReservaServicioDeleteView(generic.DeleteView):
     model = ReservaServicio
     template_name = 'reservas/eliminar_reserva.html'
+    extra_context = {'titulo': 'Eliminar Reserva de Servicio',
+                     'mensaje_boton': 'ELIMINAR'}
     success_url = reverse_lazy('app_reservas:listado_reservas')
-
-    def form_valid(self, form):
-        form.instance.delete()
-        messages.success(self.request, "La reserva se eliminó correctamente.")
-        return super().form_valid(form)
