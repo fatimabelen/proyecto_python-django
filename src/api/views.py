@@ -56,4 +56,9 @@ class EmpleadoListAPIView(generics.ListAPIView):
 class EmpleadoRetrieveAPIVIEW(generics.RetrieveAPIView):
     queryset = Empleado.objects.all()
     serializer_class = EmpleadoSerializerRetrieve
-    permission_classes = [IsAuthenticatedOrReadOnly]    
+    permission_classes = [IsAuthenticatedOrReadOnly]   
+
+
+def api_documentation(request):
+    # Aquí puedes proporcionar la información sobre los endpoints de tu API
+    return render(request, 'homepages/homepage_apis.html') 

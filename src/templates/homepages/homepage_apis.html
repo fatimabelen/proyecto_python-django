@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block titulo %} PÁGINA DE INICIO APIs{% endblock titulo %}
+
+{% block contenido %}
+
+<h1 align="center">Documentación de las APIS</h1>
+
+<div>
+  <h2>Endpoint: /api/clientes/</h2>
+  <p>
+    <strong>Descripción:</strong> Este endpoint devuelve una lista con información resumida de todos los clientes registrados en el sistema.
+    <br>
+    <strong>Métodos HTTP permitidos:</strong> GET
+    <br>
+    <strong>Parámetros de solicitud:</strong> No se requieren parámetros.
+    <br>
+    <strong>Códigos de estado en caso de éxito:</strong> 200 (OK)
+    <br>
+    <strong>Códigos de estado en caso de error:</strong> 404 (Not Found), 500 (Internal Server Error)
+    <br>
+    <strong>Formato de respuesta:</strong> JSON
+    <br>
+    <strong> Ejemplo:</strong>
+    <pre><code>
+        [
+          {
+            "id": 1,
+            "nombre": "María",
+          },
+          {
+            "id": 2,
+            "nombre": "Juan",
+          }
+        ]
+    </code></pre>
+    <strong><a href=" http://localhost:8000/api/clientes/" target="_blank">Consultar la API de listar Clientes</a>
+  </p>
+</div>
+
+        
+<div>
+  <h2>Endpoint: /api/clientes/{id}/</h2>
+  <p>
+    <strong>Descripción:</strong> Este endpoint devuelve la información completa de un cliente específico.
+    <br>
+    <strong>Métodos HTTP permitidos:</strong> GET
+    <br>
+    <strong>Parámetros de solicitud:</strong> Identificador (ID) del cliente que se desea recuperar.
+    <br>
+    <strong>Códigos de estado:</strong> 200 (OK), 404 (Not Found), 500 (Internal Server Error)
+    <br>
+    <strong>Formato de respuesta:</strong> JSON
+    <br>
+    <strong> Ejemplo:</strong>
+    <pre><code>
+        [
+         {
+            "id": 1,
+            "nombre": "María",
+            "apellido": "Perez",
+            "activo": True
+          }
+        ]
+    </code></pre>
+    <strong><a href="http://localhost:8000/api/clientes/12" target="_blank">Consultar la API que lista un Cliente por su ID</a>
+  </p>
+</div>
+
+
+{% endblock contenido %}

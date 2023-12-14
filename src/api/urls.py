@@ -14,4 +14,6 @@ urlpatterns = [
     path('clientes/<int:pk>/', views.ClienteRetrieveAPIView.as_view(), name='buscar_cliente'),
     path('servicios/', views.ServicioListAPIView.as_view(), name='listar_servicio'),
     path('servicios/<int:pk>/', views.ServicioRetrieveAPIView.as_view(), name='buscar_servicio'),
+    path('documentacion/', views.api_documentation, name='api_documentacion' )
 ]
+

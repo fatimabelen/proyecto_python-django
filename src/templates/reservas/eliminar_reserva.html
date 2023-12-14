@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+Eliminación de reserva
+{% endblock titulo %}
+
+{% block contenido %}
+<h2>Eliminar reserva</h2>
+
+<form method="post" action="{% url 'app_reservas:eliminar_reserva' pk=reserva.pk %}">
+    {% csrf_token %}
+
+    <p>¿Estás seguro de que quieres eliminar la reserva?</p>
+
+    <input type="submit" class="btn btn-danger" value="Eliminar">
+</form>
+
+<a href="{% url 'app_reservas:listado_reservas' %}" class="btn btn-primary mt-2">Volver al listado</a>
+{% endblock contenido %}

@@ -18,7 +18,6 @@ class ReservasListView(generic.ListView):
     context_object_name = 'reservas'
 
 
-
 # Vista para crear nuevas reservas de servicios
 class ReservasCreateView(generic.CreateView):
     model = ReservaServicio
@@ -52,9 +51,10 @@ class ReservasUpdateView(generic.UpdateView):
 # Vista para eliminar una reserva de servicio
 class ReservaServicioDeleteView(generic.DeleteView):
     model = ReservaServicio
-    template_name = 'reservas/confirmar_eliminar_reserva.html'
+    template_name = 'reservas/eliminar_reserva.html'
     success_url = reverse_lazy('app_reservas:listado_reservas')
 
-    def delete(self, request, *args, **kwargs):
-        messages.success(request, "La reserva se eliminó correctamente.")
-        return super().delete(request, *args, **kwargs)
+    def form_valid(self, form):
+        form.instance.delete()
+        messages.success(self.request, "La reserva se eliminó correctamente.")
+        return super().form_valid(form)

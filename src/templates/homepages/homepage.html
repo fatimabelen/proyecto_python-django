@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %} PÁGINA DE INICIO {% endblock titulo %}
+
+{% block contenido %}
+
+<h1> Reservas de servicios para eventos </h1>
+
+<div >
+    <a href="{% url 'app_clientes:listado_clientes' %}"> Listado de clientes </a> 
+    <a href="{% url 'app_empleados:listado_empleados ' %}"> Listado de empleados</a>
+    <a href="{% url'app_coordinadores:listado_coordinadores' %}"> Listado de coordinadores</a> 
+    <a href="{% url 'app_servicios:listado_servicios' %}"> Listado de servicios</a> 
+    <a href="{% url 'app_reservas:listado_reservas' %}"> Listado de reservas</a> 
+<7div>
+{% endblock contenido %}
