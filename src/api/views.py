@@ -30,3 +30,7 @@ class ClienteRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializerRetrieve
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+def api_documentation(request):
+    # Aquí puedes proporcionar la información sobre los endpoints de tu API
+    return render(request, 'homepages/homepage_apis.html')

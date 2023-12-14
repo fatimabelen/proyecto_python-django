@@ -35,11 +35,11 @@
         <td>{{ coordinador.nombre}}</td>
         <td>{{ coordinador.apellido}}</td>
         <td>{{ coordinador.activo}}</td>
-        <td> <a href="{% url 'coordinadores:actualizar_coordinador' coordinador.pk %}"> <button type="button"
+        <td> <a href="{% url 'app_coordinadores:actualizar_coordinador' coordinador.pk %}"> <button type="button"
               class="btn btn-outline-warning">Modificar</button> </a> </td>
         <td>
           {% if coordinador.activo %}
-          <a href="{% url 'coordinadores:desactivar_coordinador' coordinador.pk %}"><button type="button"
+          <a href="{% url 'app_coordinadores:desactivar_coordinador' coordinador.pk %}"><button type="button"
               class="btn btn-outline-danger"> Desactivar</button> </a>
         </td>
         {% else %}
@@ -47,7 +47,7 @@
         {% endif %}
         <td>
           {% if not coordinador.activo%}
-          <a href="{% url 'coordinadores:activar_coordinador' coordinador.pk %}"><button type="button"
+          <a href="{% url 'app_coordinadores:activar_coordinador' coordinador.pk %}"><button type="button"
               class="btn btn-outline-success">Activar</button></a>
         </td>
         {% else %}
@@ -59,6 +59,6 @@
     </tbody>
   </table>
 
-  <a href="{% url 'coordinadores:crear_coordinador' %}"> <button type="button" class="btn btn-primary">Nuevo
+  <a href="{% url 'app_coordinadores:crear_coordinador' %}"> <button type="button" class="btn btn-primary">Nuevo
       coordinador</button></a>
   {%endblock contenido%}
