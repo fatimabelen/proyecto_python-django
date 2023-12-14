@@ -41,7 +41,7 @@ def activar_coordinador(request, id):
     coordinador = get_object_or_404(Coordinador, id=id)
     coordinador.activo = True
     coordinador.save()  # Guarda los cambios en la base de datos
-    return redirect('app_coordinadores:listado_coordinadores')
+    return redirect('coordinadores:listado_coordinadores')
 
 
 # Vista para desactivar el registro de un coordinador
