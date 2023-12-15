@@ -16,7 +16,7 @@ class CoordinadorSerializerRetrieve(serializers.ModelSerializer):
         model = Coordinador
         fields = '__all__'       
 
-# CLIENTE
+# CLIENTES
 class ClienteSerializerList(serializers.ModelSerializer):
     class Meta:
         model = Cliente
@@ -36,8 +36,9 @@ class ServicioSerializerList(serializers.ModelSerializer):
 class ServicioSerializerRetrieve(serializers.ModelSerializer):
     class Meta:
         model = Servicio
-        fields = '__all__'               
-# EMPLEADO
+        fields = '__all__'     
+
+# EMPLEADOS
 class EmpleadoSerializerList(serializers.ModelSerializer):
     class Meta:
         model = Empleado
@@ -47,3 +48,14 @@ class EmpleadoSerializerRetrieve(serializers.ModelSerializer):
     class Meta:
         model = Empleado
         fields = '__all__'       
+
+# RESERVAS
+class ReservaSerializerList(serializers.ModelSerializer):
+    class Meta:
+        model = ReservaServicio
+        fields = ['id', 'fecha_reservada', 'servicio']
+
+class ReservaSerializerRetrieve(serializers.ModelSerializer):
+    class Meta:
+        model = ReservaServicio
+        fields = '__all__'     

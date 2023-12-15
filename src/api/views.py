@@ -10,6 +10,7 @@ from .serializers import ClienteSerializerList, ClienteSerializerRetrieve
 from .serializers import CoordinadorSerializerList, CoordinadorSerializerRetrieve
 from .serializers import ServicioSerializerList, ServicioSerializerRetrieve
 from .serializers import EmpleadoSerializerList, EmpleadoSerializerRetrieve
+from .serializers import ReservaSerializerList, ReservaSerializerRetrieve
 
 
 # Create your views here.
@@ -20,7 +21,7 @@ class CoordinadorListAPIView(generics.ListAPIView):
     serializer_class = CoordinadorSerializerList
     permission_clases = [IsAuthenticatedOrReadOnly]
         
-class CoordinadorRetrieveAPIVIEW(generics.RetrieveAPIView):
+class CoordinadorRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Coordinador.objects.all()
     serializer_class = CoordinadorSerializerRetrieve
     permission_classes = [IsAuthenticatedOrReadOnly]    
@@ -47,15 +48,26 @@ class ServicioRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = ServicioSerializerRetrieve
     permission_classes = [IsAuthenticatedOrReadOnly]    
 
-    # Vistas para EMPLEADO
+# Vistas para EMPLEADO
 class EmpleadoListAPIView(generics.ListAPIView):
     queryset = Empleado.objects.all()
     serializer_class = EmpleadoSerializerList
     permission_clases = [IsAuthenticatedOrReadOnly]
         
-class EmpleadoRetrieveAPIVIEW(generics.RetrieveAPIView):
+class EmpleadoRetrieveAPIView(generics.RetrieveAPIView):
     queryset = Empleado.objects.all()
     serializer_class = EmpleadoSerializerRetrieve
+    permission_classes = [IsAuthenticatedOrReadOnly]   
+
+# Vistas para RESERVAS
+class ReservaListAPIView(generics.ListAPIView):
+    queryset = ReservaServicio.objects.all()
+    serializer_class = ReservaSerializerList
+    permission_clases = [IsAuthenticatedOrReadOnly]
+        
+class ReservaRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = ReservaServicio.objects.all()
+    serializer_class = ReservaSerializerRetrieve
     permission_classes = [IsAuthenticatedOrReadOnly]   
 
 
