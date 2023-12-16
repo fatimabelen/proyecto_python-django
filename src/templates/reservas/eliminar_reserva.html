@@ -1,21 +1,30 @@
 {% extends "base.html" %}
 
 {% block titulo %}
+
 Eliminación de reserva
+
 {% endblock titulo %}
 
 {% block contenido %}
-<h2>Eliminar reserva</h2>
 
-<form method="post" action="{% url 'app_reservas:eliminar_reserva' object.pk %}">
-    {% csrf_token %}
+<div>
+    <h2 class="mt-4" align="center">ELIMINAR RESERVA</h2>
 
-    <p>¿Estás seguro de que quieres eliminar la reserva?</p>
+    <form method="post" action="{% url 'app_reservas:eliminar_reserva' object.pk %}" align="center">
+        {% csrf_token %}
 
-    {{ form }}
+        <p>¿Estás seguro de que quieres eliminar la reserva?</p>
 
-    <input type="submit" class="btn btn-danger" value="Eliminar">
-</form>
+        {{ form }}
 
-<a href="{% url 'app_reservas:listado_reservas' %}" class="btn btn-primary mt-2">Volver al listado</a>
+        <input type="submit" class="btn btn-danger" value="Eliminar">
+    </form>
+
+    <div align="center" style="margin-top: 40px">
+        <a href="{% url 'app_reservas:listado_reservas' %}">
+            <button type="button" class="btn btn-secondary">Volver al listado</button>
+        </a>
+    </div>
+</div>
 {% endblock contenido %}
