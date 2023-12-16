@@ -8,12 +8,36 @@ Actualización Empleado
 
 {% block contenido %}
 
-<h2>Actualizar Empleado</h2>
+<div>
+    <style>
+        .my-form {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Actualizar Empleado</button>
+        .my-form.input {
+            border: 2px solid #428bca;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
 
-</form>
+    <h2 align="center">ACTUALIZAR EMPLEADO</h2>
+
+    <form action="" method="post" enctype="multipart/form-data" class="my-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Actualizar empleado</button>
+    </form>
+
+    <div align="center" style="margin-top: 40px">
+        <a href="{% url 'app_empleados:listado_empleados' %}">
+            <button type="button" class="btn btn-secondary">Volver al listado</button>
+        </a>
+    </div>
+</div>
 {% endblock %}

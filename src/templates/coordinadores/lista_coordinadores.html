@@ -1,16 +1,19 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block titulo %} LISTA COORDINADORES {% endblock titulo%}
 
 {% block contenido%}
 
-<div class="container mt-4"> <!-- Agrega un margen superior al contenedor principal -->
-
+<div class="container mt-4">
 
   <h2 align="center" class="mb-4">LISTADO DE COORDINADORES</h2>
 
+  <a href="{% url 'app_coordinadores:crear_coordinador' %}">
+    <button type="button" class="btn btn-primary" style="margin-bottom: 30px;">Nuevo coordinador</button>
+  </a>
+
   <table class="table table-hover">
-    <thead>
+    <thead align="center">
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
@@ -21,44 +24,48 @@
         <th scope='col'> </th>
       </tr>
     </thead>
-    <tbody>
+    <tbody align="center">
 
       {% for coordinador in coordinadores %}
       <tr>
-        <th scope="row"> {{coordinador.id}}
-          <!--
-          <a href="{{ coordinador.get_absolute_url}}"> 
-          {{ coordinador.pk}}
-          </a>>
-        -->
-        </th>
-        <td>{{ coordinador.nombre}}</td>
-        <td>{{ coordinador.apellido}}</td>
-        <td>{{ coordinador.activo}}</td>
-        <td> <a href="{% url 'app_coordinadores:actualizar_coordinador' coordinador.pk %}"> <button type="button"
-              class="btn btn-outline-warning">Modificar</button> </a> </td>
+        <th scope="row">{{coordinador.id}}</th>
+        <td>{{ coordinador.nombre }}</td>
+        <td>{{ coordinador.apellido }}</td>
         <td>
           {% if coordinador.activo %}
-          <a href="{% url 'app_coordinadores:desactivar_coordinador' coordinador.pk %}"><button type="button"
-              class="btn btn-outline-danger"> Desactivar</button> </a>
+          <i class="fas fa-check-circle text-success"></i>
+          {% else %}
+          <i class="fas fa-times-circle text-danger"></i>
+          {% endif %}
         </td>
-        {% else %}
-        <span> <button type="button" class="btn btn-light">Desactivar</button></span>
-        {% endif %}
         <td>
-          {% if not coordinador.activo%}
-          <a href="{% url 'app_coordinadores:activar_coordinador' coordinador.pk %}"><button type="button"
-              class="btn btn-outline-success">Activar</button></a>
+          <a href="{% url 'app_coordinadores:actualizar_coordinador' coordinador.pk %}">
+            <button type="button" class="btn btn-outline-warning">Modificar</button>
+          </a>
         </td>
-        {% else %}
-        <span> <button type="button" class="btn btn-light">Activar</button></span>
-        {% endif %}
+        <td>
+          {% if coordinador.activo %}
+          <a href="{% url 'app_coordinadores:desactivar_coordinador' coordinador.pk %}">
+            <button type="button" class="btn btn-outline-danger"> Desactivar</button>
+          </a>
+          {% else %}
+          <button type="button" class="btn btn-light" disabled>Desactivar</button>
+          {% endif %}
+        </td>
+        <td>
+          {% if not coordinador.activo %}
+          <a href="{% url 'app_coordinadores:activar_coordinador' coordinador.pk %}">
+            <button type="button" class="btn btn-outline-success">Activar</button>
+          </a>
+          {% else %}
+          <button type="button" class="btn btn-light" disabled>Activar</button>
+          {% endif %}
+        </td>
       </tr>
-      {% endfor%}
+      {% endfor %}
 
     </tbody>
   </table>
+</div>
 
-  <a href="{% url 'app_coordinadores:crear_coordinador' %}"> <button type="button" class="btn btn-primary">Nuevo
-      coordinador</button></a>
-  {%endblock contenido%}
+{% endblock contenido %}

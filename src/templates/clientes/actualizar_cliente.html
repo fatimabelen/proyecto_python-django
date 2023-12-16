@@ -7,15 +7,36 @@ Actualización Cliente
 {% endblock titulo %}
 
 {% block contenido %}
+<div>
+    <style>
+        .my-form {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
 
-<h2>Actualizar Cliente</h2>
+        .my-form.input {
+            border: 2px solid #428bca;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
 
-<form action="", method="post", enctype='multipart/form'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">ACTUALIZAR CLIENTE</button>
-</form>
-<div class="alert alert-primary col-3" role="alert">
-    <a href="{% url 'app_clientes:listado_clientes' %}" class="alert-link"> Click acá </a> para volver al listado. 
+    <h2 align="center">ACTUALIZAR CLIENTE</h2>
+
+    <form action="" method="post" enctype="multipart/form-data" class="my-form" align="center">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success" style="margin-top: 20px;">Actualizar cliente</button>
+    </form>
+
+    <div align="center" style="margin-top: 40px">
+        <a href="{% url 'app_clientes:listado_clientes' %}">
+            <button type="button" class="btn btn-secondary">Volver al listado</button>
+        </a>
+    </div>
 </div>
 {% endblock %}

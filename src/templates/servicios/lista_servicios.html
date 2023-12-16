@@ -4,57 +4,65 @@
 
 {% block contenido%}
 
-<div class="container mt-4"> <!-- Agrega un margen superior al contenedor principal -->
+<div class="container mt-4">
 
+  <h2 align="center" class="mb-4">LISTADO DE SERVICIOS </h2>
 
-<h2 align="center" class="mb-4">LISTADO DE SERVICIOS </h2>
+  <a href="{% url 'app_servicios:registrar_servicio' %}">
+    <button type="button" class="btn btn-primary" style="margin-bottom: 30px;">Nuevo servicio</button>
+  </a>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Activo</th>
-      <th scope='col'>  </th>
-      <th scope='col'>  </th>
-      <th scope='col'> </th>
-    </tr>
-  </thead>
-  <tbody>
+  <table class="table table-hover">
+    <thead align="center">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Activo</th>
+        <th scope='col'> </th>
+        <th scope='col'> </th>
+        <th scope='col'> </th>
+      </tr>
+    </thead>
+    <tbody align="center">
 
-    {% for servicio in servicios %} 
-    <tr>
-        <th scope="row"> {{servicio.pk}}
-      <!--
-        <a href="{{ servicio.get_absolute_url}}"> 
-        {{ cliente.pk}}
-        </a>>
-      --> 
-        </th>
-      <td>{{ servicio.nombre}}</td>
-      <td>{{ servicio.descripcion}}</td>
-      <td>{{ servicio.precio}}</td>
-      <td>{{ servicio.activo}}</td>
-      <td> <a href="{% url 'app_servicios:actualizar_servicio' servicio.pk %}"> <button type="button" class="btn btn-outline-warning">Modificar</button> </a> </td>
-      <td> 
-        {% if  servicio.activo %}
-            <a href="{% url 'app_servicios:desactivar_servicio' servicio.pk %}"><button type="button" class="btn btn-outline-danger"> Desactivar</button> </a> </td>
+      {% for servicio in servicios %}
+      <tr>
+        <th scope="row"> {{servicio.pk}}</th>
+        <td>{{ servicio.nombre}}</td>
+        <td>{{ servicio.descripcion}}</td>
+        <td>{{ servicio.precio}}</td>
+        <td>
+          {% if servicio.activo %}
+          <i class="fas fa-check-circle text-success"></i>
+          {% else %}
+          <i class="fas fa-times-circle text-danger"></i>
+          {% endif %}
+        </td>
+        <td> <a href="{% url 'app_servicios:actualizar_servicio' servicio.pk %}"> <button type="button"
+              class="btn btn-outline-warning">Modificar</button> </a> </td>
+        <td>
+          {% if servicio.activo %}
+          <a href="{% url 'app_servicios:desactivar_servicio' servicio.pk %}"><button type="button"
+              class="btn btn-outline-danger"> Desactivar</button> </a>
+        </td>
         {% else %}
-            <span> <button type="button" class="btn btn-light">Desactivar</button></span> 
+        <span> <button type="button" class="btn btn-light">Desactivar</button></span>
         {% endif %}
-      <td> 
-        {% if not servicio.activo %}
-            <a href="{% url 'app_servicios:activar_servicio' servicio.pk %}"><button type="button" class="btn btn-outline-success">Activar</button></a> </td>
+        <td>
+          {% if not servicio.activo %}
+          <a href="{% url 'app_servicios:activar_servicio' servicio.pk %}"><button type="button"
+              class="btn btn-outline-success">Activar</button></a>
+        </td>
         {% else %}
-            <span> <button type="button" class="btn btn-light">Activar</button></span>
+        <span> <button type="button" class="btn btn-light">Activar</button></span>
         {% endif %}
-    </tr> 
-    {% endfor%}
+      </tr>
+      {% endfor%}
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
-<a href="{% url 'app_servicios:registrar_servicio' %}"> <button type="button" class="btn btn-primary">Nuevo servicio</button></a>
 {%endblock contenido%}

@@ -4,49 +4,48 @@
 
 {% block contenido%}
 
-<div class="container mt-4"> <!-- Agrega un margen superior al contenedor principal -->
+<div class="container mt-4">
 
+  <h2 align="center" class="mb-4">LISTADO DE RESERVAS DE SERVICIOS </h2>
 
-<h2 align="center" class="mb-4">LISTADO DE RESERVAS DE SERVICIOS </h2>
+  <a href="{% url 'app_reservas:registrar_reserva' %}">
+    <button type="button" class="btn btn-primary" style="margin-bottom: 30px;">Nueva reserva</button>
+  </a>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Fecha de reserva </th>
-      <th scope="col">Fecha reservada</th>
-      <th scope="col">Cliente</th>
-      <th scope='col'>Servicio </th>
-      <th scope='col'> Empleado que tomó la reserva</th>
-      <th scope='col'> Responsable del evento </th>
-      <th scope='col'> </th>
-      <th scope='col'> </th>
-    </tr>
-  </thead>
-  <tbody>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
 
-    {% for reserva in reservas%} 
-    <tr>
-        <th scope="row"> {{reserva.pk}}
-      <!--
-        <a href="{{ cliente.get_absolute_url}}"> 
-        {{ cliente.pk}}
-        </a>>
-      --> 
-        </th>
-      <td>{{ reserva.fecha_reserva }}</td>
-      <td>{{ reserva.fecha_reservada }}</td>
-      <td>{{ reserva.cliente}}</td>
-      <td>{{ reserva.servicio}}</td>
-      <td>{{ reserva.empleado}}</td>
-      <td>{{ reserva.responsable}}</td>
-      <td> <a href="{% url 'app_reservas:actualizar_reserva' reserva.pk %}"> <button type="button" class="btn btn-outline-warning">Modificar</button> </a> </td>
-      <td> <a href="{% url 'app_reservas:eliminar_reserva' reserva.pk %}"> <button type="button" class="btn btn-outline-danger">Eliminar</button> </td>
-    </tr> 
-    {% endfor%}
+        <th scope="col">Fecha reservada</th>
+        <th scope="col">Cliente</th>
+        <th scope='col'>Servicio</th>
+        <th scope='col'>Responsable del evento</th>
+        <th scope='col'>Empleado que tomó la reserva</th>
+        <th scope="col">Fecha de reserva</th>
+        <th scope='col'> </th>
+        <th scope='col'> </th>
+      </tr>
+    </thead>
+    <tbody>
 
-  </tbody>
-</table>
+      {% for reserva in reservas%}
+      <tr>
+        <th scope="row"> {{reserva.pk}}</th>
+        <td>{{ reserva.fecha_reservada }}</td>
+        <td>{{ reserva.cliente.apellido }} {{ reserva.cliente.nombre }}</td>
+        <td>{{ reserva.servicio}}</td>
+        <td>{{ reserva.responsable.apellido }} {{ reserva.responsable.nombre }}</td>
+        <td>{{ reserva.empleado.apellido }} {{ reserva.empleado.nombre }}</td>
+        <td>{{ reserva.fecha_reserva }}</td>
+        <td> <a href="{% url 'app_reservas:actualizar_reserva' reserva.pk %}"> <button type="button"
+              class="btn btn-outline-warning">Modificar</button> </a> </td>
+        <td> <a href="{% url 'app_reservas:eliminar_reserva' reserva.pk %}"> <button type="button"
+              class="btn btn-outline-danger">Eliminar</button> </td>
+      </tr>
+      {% endfor%}
 
-<a href="{% url 'app_reservas:registrar_reserva' %}"> <button type="button" class="btn btn-primary">Nueva reserva</button></a>
-{%endblock contenido%}
+    </tbody>
+  </table>
+
+  {%endblock contenido%}

@@ -1,17 +1,44 @@
 {% extends "base.html" %}
 
-{% block contenido%}
+{% block titulo %} REGISTRAR SERVICIO{% endblock titulo %}
 
-<h2> FORMULARIO DE SERVICIO</h2>
+{% block contenido %}
 
-<form action="" , method="POST" , enctype='multipart/form'>
-    <table>
-        {{ form.as_table }}
+<div>
+    <h2 class="mt-4" align="center">FORMULARIO DE SERVICIO</h2>
+
+    <style>
+        .my-form {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .my-form.input {
+            border: 2px solid #428bca;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <form action="" method="POST" enctype='multipart/form' class="my-form">
         {% csrf_token %}
-    </table>
-    <button type="submit">{{mensaje_boton}} </button>
-</form>
-<div class="alert alert-primary" role="alert">
-    <a href="{% url 'app_servicios:listado_servicios' %}" class="alert-link"> Click acá </a> para volver al listado.
+        <div class="mb-3">
+            <table>
+                {{ form.as_table }}
+            </table>
+        </div>
+
+        <button type="submit" class="btn btn-success" style="margin-top: 20px;">Registrar servicio</button>
+    </form>
+
+    <div align="center" style="margin-top: 40px">
+        <a href="{% url 'app_servicios:listado_servicios' %}">
+            <button type="button" class="btn btn-secondary">Volver al listado</button>
+        </a>
+    </div>
 </div>
 {% endblock contenido%}
