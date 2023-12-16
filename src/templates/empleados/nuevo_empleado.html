@@ -27,16 +27,7 @@
     <form action="" , method="POST" , enctype='multipart/form' class="my-form" align="center">
         {% csrf_token %}
         <div class="mb-3">
-            {{ form.nombre.label_tag }}
-            {{ form.nombre }}
-        </div>
-        <div class="mb-3">
-            {{ form.apellido.label_tag }}
-            {{ form.apellido }}
-        </div>
-        <div class="mb-3">
-            {{ form.numero_legajo.label_tag }}
-            {{ form.numero_legajo }}
+            {{ form.as_p }}
         </div>
         <button type="submit" class="btn btn-success" style="margin-top: 20px;">Registrar Empleado</button>
     </form>

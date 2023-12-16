@@ -8,39 +8,38 @@ ACTUALIZAR RESERVA
 
 {% block contenido %}
 
-<h2 align="center"> ACTUALIZAR RESERVA DE SERVICIO</h2>
+<div>
+    <h2 align="center"> ACTUALIZAR RESERVA DE SERVICIO</h2>
 
+    <style>
+        .my-form {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
 
-<style>
-    .my-form {
-        max-width: 500px; /* Define el ancho máximo del formulario */
-        margin: auto; /* Centra horizontalmente */
-        margin-top: 20px; /* Agrega un margen en la parte superior */
-        padding: 20px; /* Agrega un relleno interno */
-        border: 1px solid #ddd; /* Estilo del borde */
-        border-radius: 10px; /* Radio de borde para esquinas redondeadas */
-    }
+        .my-form.input {
+            border: 2px solid #428bca;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
 
-    /* Estilos personalizados para los inputs */
-    .my-form.input {
-        border: 2px solid #428bca; /* Estilo del borde de los inputs */
-        border-radius: 5px; /* Radio de borde para esquinas redondeadas */
-        margin-bottom: 10px; /* Agrega espacio entre los inputs */
-    }
+    <form action="" method="POST" enctype='multipart/form' class="my-form" align="center">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
 
-
-</style>
-
-<form  action="" , method="POST" , enctype='multipart/form' class="my-form">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Actualizar Reserva</button>
-</form>
-<div >
-    <a href="{% url 'app_reservas:listado_reservas' %}" ><button type="button" class="btn btn-secondary">Volver al listado</button> </a> 
+        <button type="submit" class="btn btn-success" style="margin-top: 20px;">Actualizar Reserva</button>
+    </form>
+    <div align="center" style="margin-top: 40px">
+        <a href="{% url 'app_reservas:listado_reservas' %}">
+            <button type="button" class="btn btn-secondary">Volver al listado</button>
+        </a>
+    </div>
 </div>
-
 {% endblock %}
-
-
-
