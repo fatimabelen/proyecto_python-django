@@ -28,4 +28,7 @@ urlpatterns = [
     path('servicios/', include('app_servicios.urls', namespace='servicios')),
     path('reservas/', include('app_reservas.urls', namespace='reservas')),
     path('api/', include('api.urls', namespace='api')),
+    path('', include('homepage.urls', namespace='home')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
