@@ -75,6 +75,5 @@ class ReservaRetrieveAPIView(generics.RetrieveAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]   
 
 
-def api_documentation(request):
-    # Aquí puedes proporcionar la información sobre los endpoints de tu API
+def api_documentacion(request):
     return render(request, 'homepages/homepage_apis.html') 

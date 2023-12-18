@@ -34,7 +34,7 @@
         <td>{{ reserva.fecha_reservada }}</td>
         <td>{{ reserva.cliente.apellido }} {{ reserva.cliente.nombre }}</td>
         <td>{{ reserva.servicio}}</td>
-        <td>{{ reserva.responsable.apellido }} {{ reserva.responsable.nombre }}</td>
+        <td>{{ reserva.coordinador.apellido }} {{ reserva.coordinador.nombre }}</td>
         <td>{{ reserva.empleado.apellido }} {{ reserva.empleado.nombre }}</td>
         <td>{{ reserva.fecha_reserva }}</td>
         <td> <a href="{% url 'app_reservas:actualizar_reserva' reserva.pk %}"> <button type="button"

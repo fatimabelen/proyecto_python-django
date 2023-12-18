@@ -8,8 +8,8 @@ from app_servicios.models import Servicio
 # Register your models here.
 @admin.register(ReservaServicio)
 class ReservaServicioAdmin(admin.ModelAdmin):
-    list_display = ['fecha_reserva', 'empleado', 'fecha_reservada', 'cliente', 'servicio', 'responsable']
-    search_fields = ['cliente__nombre','cliente__apellido',  'servicio__nombre', 'empleado__nombre', 'empleado__apellido', 'responsable__nombre', 'responsable__apellido']
+    list_display = ['fecha_reserva', 'empleado', 'fecha_reservada', 'cliente', 'servicio', 'coordinador']
+    search_fields = ['cliente__nombre','cliente__apellido',  'servicio__nombre', 'empleado__nombre', 'empleado__apellido', 'coordinador__nombre', 'coordinador__apellido']
 
 
 

@@ -11,7 +11,7 @@ class ReservaServicio(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     servicio = models.ForeignKey(Servicio, on_delete=models.CASCADE, null=True)
     empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE, null=True)
-    responsable = models.ForeignKey(Coordinador, on_delete=models.CASCADE, null=True)
+    coordinador = models.ForeignKey(Coordinador, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
-        return F"{self.fecha_reserva} | {self.fecha_reservada} | {self.cliente__nombre} | {self.servicio__nombre}  | {self.empleado__nombre} | {self.responsable__nombre}"
+        return F"{self.fecha_reserva} | {self.fecha_reservada} | {self.cliente__nombre} | {self.servicio__nombre}  | {self.empleado__nombre} | {self.coordinador__nombre}"
