@@ -39,9 +39,9 @@ class ReservasUpdateView(generic.UpdateView):
         cliente = form.cleaned_data.get('cliente') 
         servicio = form.cleaned_data.get('servicio') 
         empleado = form.cleaned_data.get('empleado') 
-        responsable = form.cleaned_data.get('responsable')  
+        coordinador = form.cleaned_data.get('coordinador')  
 
-        if not cliente.activo or not servicio.activo or not empleado.activo or not responsable.activo:
+        if not cliente.activo or not servicio.activo or not empleado.activo or not coordinador.activo:
             form.add_error(None, 'No se puede seleccionar un elemento inactivo.')
             return self.form_invalid(form)
 
