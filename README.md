@@ -40,7 +40,7 @@ El trabajo se desarrollo a lo largo de 3 semanas y siguiendo la metodología ág
 - Django
 - Rest Framework
 
-## Capturas de Pantalla de la Aplicación Web
+  ## Interfaz gráfica de la Aplicación Web
 
 Página de inicio:
 
